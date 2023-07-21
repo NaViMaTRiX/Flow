@@ -1,5 +1,6 @@
-body{
+* {
   margin: 0;
+  padding: 0;
 }
 
 .box {
@@ -105,17 +106,19 @@ body{
   width: 34px;
 }
 
-.box .header {
+.box .titlebar {
+  user-select: none;
+  position: fixed;
   display: flex;
   align-items: center;
   height: 24px;
   left: 11px;
   position: absolute;
   top: 7px;
-  width: 54px;
+  width: 98%;
 }
 
-.box .unit-header{
+.box .titlebar-button{
   margin-right: 14px;
 }
 
