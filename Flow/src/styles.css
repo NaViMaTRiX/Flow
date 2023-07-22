@@ -119,7 +119,11 @@
 }
 
 .box .titlebar-button{
-  margin-right: 14px;
+  margin-right: 10px;
+}
+
+.kons-button{
+  fill: white;
 }
 
 
