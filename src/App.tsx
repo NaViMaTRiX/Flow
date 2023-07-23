@@ -73,7 +73,7 @@ function App() {
                 <div className="timer">
                   <h1 className="text-wrapper">29:10</h1>
                 </div>
-                <div class="load">
+                <div className="load">
                   <svg xmlns="http://www.w3.org/2000/svg" width="42" height="9" viewBox="0 0 42 9" fill="none"
                   >
                     <path
@@ -96,7 +96,7 @@ function App() {
                 </div>
               </div>
               <div className="div">Flow</div>
-              <div class="pause">
+              <div className="pause">
                 <svg xmlns="http://www.w3.org/2000/svg" width="34" height="47" viewBox="0 0 34 47" fill="none"
                 >
                   <path
@@ -105,9 +105,9 @@ function App() {
                 </svg>
               </div>
             </div>
-            <div data-tauri-drag-region class="titlebar">
+            <div data-tauri-drag-region className="titlebar">
               <div className="titlebar-button">
-                <div className="close" onClick={() => appWindow.close()}>
+                <div className="close" onClick={async () => await appWindow.close()}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
@@ -117,7 +117,7 @@ function App() {
                 </div>
               </div>
               <div className="titlebar-button">
-                <div className="dash" onClick={() => appWindow.minimize()}>
+                <div className="dash" onClick={async () => await appWindow.minimize()}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path
                       d="M2 7.75C2 7.55109 2.07902 7.36032 2.21967 7.21967C2.36032 7.07902 2.55109 7 2.75 7H12.75C12.9489 7 13.1397 7.07902 13.2803 7.21967C13.421 7.36032 13.5 7.55109 13.5 7.75C13.5 7.94891 13.421 8.13968 13.2803 8.28033C13.1397 8.42098 12.9489 8.5 12.75 8.5H2.75C2.55109 8.5 2.36032 8.42098 2.21967 8.28033C2.07902 8.13968 2 7.94891 2 7.75Z"
