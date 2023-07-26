@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 
 function Timer(props: any) {
 
-    const setMinutes = 45;
-
-    const [seconds, setSeconds] = useState(setMinutes * 60);
+    const [seconds, setSeconds] = useState(props.value * 60);
     const [isPause, setIsPause] = useState(false);
 
     const minutesString = String(Math.floor(seconds / 60)).padStart(2, "0");

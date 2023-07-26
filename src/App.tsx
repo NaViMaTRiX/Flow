@@ -1,29 +1,22 @@
-import CloseButton from "./components/CloseButton";
-import DashButton from "./components/DashButton";
-import PinButton from "./components/PinButton";
-import ReloadButton from "./components/ReloadButtoh";
-import DiagrammButton from "./components/DiagrammButton";
-import TreeDotButton from "./components/TreeDotButton";
-import PlayButton from "./components/PlayButton";
-import PauseButton from "./components/PauseButton";
+import Titlebar from "./components/Titlebar";
+import SettingsButton from "./components/Buttons/SettingsButton";
+import ReloadButton from "./components/Buttons/ReloadButtoh";
+import DiagrammButton from "./components/Buttons/DiagrammButton";
+import PlayButton from "./components/Buttons/PlayButton";
+import PauseButton from "./components/Buttons/PauseButton";
 import Timer from "./components/Timer";
+import { useState } from "react";
+
 
 function App() {
 
+    const setMinutes: any = 45;
+
+    const [showSettings, setshowSettings] = useState(false);
 
     return (
         <main>
-            <div data-tauri-drag-region className="titlebar">
-                <div className="titlebar-button">
-                    <CloseButton />
-                </div>
-                <div className="titlebar-button">
-                    <DashButton />
-                </div>
-                <div className="titlebar-button">
-                    <PinButton />
-                </div>
-            </div>
+            <Titlebar />
             <div className="header">
                 <div className="header-button">
                     <ReloadButton />
@@ -32,16 +25,18 @@ function App() {
                     <DiagrammButton />
                 </div>
                 <div className="header-button">
-                    <TreeDotButton />
+                    <SettingsButton />
                 </div>
             </div>
             <div className="main">
                 <p>Flow</p>
-                <Timer />
-                <PlayButton />
-                <PauseButton />
+                <Timer value={setMinutes} />
+                <div className="play">
+                    <PlayButton />
+                    <PauseButton />
+                </div>
             </div>
-        </main >
+        </main>
     );
 }
 export default App;
