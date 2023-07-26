@@ -1,4 +1,4 @@
-function DiagrammButton(props: any) {
+function DiagramButton(props: any) {
     return (
         <button {...props}>
             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
@@ -15,4 +15,4 @@ function DiagrammButton(props: any) {
     );
 }
 
-export default DiagrammButton;
+export default DiagramButton;

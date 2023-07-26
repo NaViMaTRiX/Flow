@@ -2,7 +2,7 @@ import CloseButton from "./components/CloseButton";
 import DashButton from "./components/DashButton";
 import PinButton from "./components/PinButton";
 import ReloadButton from "./components/ReloadButtoh";
-import DiagrammButton from "./components/DiagrammButton";
+import DiagramButton from "./components/DiagramButton.tsx";
 import TreeDotButton from "./components/TreeDotButton";
 import PlayButton from "./components/PlayButton";
 import PauseButton from "./components/PauseButton";
@@ -29,7 +29,7 @@ function App() {
                     <ReloadButton />
                 </div>
                 <div className="header-button">
-                    <DiagrammButton />
+                    <DiagramButton />
                 </div>
                 <div className="header-button">
                     <TreeDotButton />

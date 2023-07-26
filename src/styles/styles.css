@@ -30,8 +30,7 @@ button {
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 8px 11px;
-    padding-bottom: 0;
+    padding: 8px 11px 0;
 }
 
 .titlebar-button {
@@ -64,7 +63,7 @@ p {
 
 h1 {
     text-align: center;
-    font-family: "Inter", Helvetica;
+    font-family: "Inter", Helvetica, serif;
     font-size: 96px;
     font-weight: 400;
     position: relative;
@@ -72,7 +71,7 @@ h1 {
 }
 
 p {
-    font-family: "Helvetica-Regular", Helvetica;
+    font-family: "Helvetica-Regular", Helvetica, serif;
     font-size: 42px;
     font-weight: 400;
 }
