@@ -1,4 +1,4 @@
-import DiagrammButton from "./Buttons/DiagrammButton";
+import DiagrammButton from "./Buttons/DiagramButton";
 import ReloadButton from "./Buttons/ReloadButtoh";
 import SettingsButton from "./Buttons/SettingsButton";
 
