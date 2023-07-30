@@ -1,60 +1,60 @@
 {
-    "build": {
-        "beforeDevCommand": "npm run dev",
-        "beforeBuildCommand": "npm run build",
-        "devPath": "http://localhost:1420",
-        "distDir": "../dist",
-        "withGlobalTauri": false
-    },
-    "package": {
-        "productName": "Flow",
-        "version": "0.5.0"
-    },
-    "tauri": {
-        "allowlist": {
+   "build": {
+      "beforeDevCommand": "npm run dev",
+      "beforeBuildCommand": "npm run build",
+      "devPath": "http://localhost:1420",
+      "distDir": "../dist",
+      "withGlobalTauri": false
+   },
+   "package": {
+      "productName": "Flow",
+      "version": "0.5.0"
+   },
+   "tauri": {
+      "allowlist": {
+         "all": false,
+         "shell": {
             "all": false,
-            "shell": {
-                "all": false,
-                "open": true
-            },
-            "window": {
-                "setAlwaysOnTop": true,
-                "all": false,
-                "close": true,
-                "hide": true,
-                "show": true,
-                "maximize": true,
-                "minimize": true,
-                "unmaximize": true,
-                "unminimize": true,
-                "startDragging": true
-            }
-        },
-        "bundle": {
-            "active": true,
-            "targets": "all",
-            "identifier": "com.tauri.dev",
-            "icon": [
-                "icons/32x32.png",
-                "icons/128x128.png",
-                "icons/128x128@2x.png",
-                "icons/icon.icns",
-                "icons/icon.ico"
-            ]
-        },
-        "security": {
-            "csp": null
-        },
-        "windows": [
-            {
-                "transparent": true,
-                "decorations": false,
-                "fullscreen": false,
-                "resizable": false,
-                "title": "Flow",
-                "width": 600,
-                "height": 350
-            }
-        ]
-    }
+            "open": true
+         },
+         "window": {
+            "setAlwaysOnTop": true,
+            "all": false,
+            "close": true,
+            "hide": true,
+            "show": true,
+            "maximize": true,
+            "minimize": true,
+            "unmaximize": true,
+            "unminimize": true,
+            "startDragging": true
+         }
+      },
+      "bundle": {
+         "active": true,
+         "targets": "all",
+         "identifier": "com.tauri.dev",
+         "icon": [
+            "icons/32x32.png",
+            "icons/128x128.png",
+            "icons/128x128@2x.png",
+            "icons/icon.icns",
+            "icons/icon.ico"
+         ]
+      },
+      "security": {
+         "csp": null
+      },
+      "windows": [
+         {
+            "transparent": true,
+            "decorations": false,
+            "fullscreen": false,
+            "resizable": false,
+            "title": "Flow",
+            "width": 600,
+            "height": 350
+         }
+      ]
+   }
 }

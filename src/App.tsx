@@ -1,42 +1,39 @@
 import Titlebar from "./components/Titlebar";
-import SettingsButton from "./components/Buttons/SettingsButton";
-import ReloadButton from "./components/Buttons/ReloadButtoh";
-import DiagrammButton from "./components/Buttons/DiagrammButton";
-import PlayButton from "./components/Buttons/PlayButton";
-import PauseButton from "./components/Buttons/PauseButton";
-import Timer from "./components/Timer";
 import { useState } from "react";
+import Primary from "./components/Primary";
+import Header from "./components/Header";
+import Settings from "./components/Settings";
+import SettingsContext from "./components/SettingsContext";
 
 
 function App() {
 
-    const setMinutes: any = 45;
+   const [showSettings, setShowSettings] = useState(true);
+   const [workMinutes, setWorkMinutes] = useState<number | 0>(45);
+   const [breakMinutes, setBreakMinutes] = useState<number | 0>(15);
 
-    const [showSettings, setshowSettings] = useState(false);
+   // function WorkMinMax(): number {
+   //    workMinutes < 1 ? setWorkMinutes(1) : workMinutes;
+   //    workMinutes > 120 ? setWorkMinutes(120) : workMinutes;
+   //    return workMinutes;
+   // }
 
-    return (
-        <main>
-            <Titlebar />
-            <div className="header">
-                <div className="header-button">
-                    <ReloadButton />
-                </div>
-                <div className="header-button">
-                    <DiagrammButton />
-                </div>
-                <div className="header-button">
-                    <SettingsButton />
-                </div>
-            </div>
-            <div className="main">
-                <p>Flow</p>
-                <Timer value={setMinutes} />
-                <div className="play">
-                    <PlayButton />
-                    <PauseButton />
-                </div>
-            </div>
-        </main>
-    );
+   // function BreakMinMax(): number {
+   //    breakMinutes < 1 ? setBreakMinutes(1) : breakMinutes;
+   //    breakMinutes > 120 ? setBreakMinutes(120) : breakMinutes;
+   //    return breakMinutes;
+   // }
+
+   return (
+      <main>
+         <Titlebar />
+         <div className="prim">
+            <SettingsContext.Provider value={{ workMinutes, breakMinutes, setWorkMinutes, setBreakMinutes }} >
+               <Header />
+               {showSettings ? <Settings /> : <Primary />}
+            </SettingsContext.Provider>
+         </div>
+      </main>
+   );
 }
 export default App;
