@@ -1,23 +1,52 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
+import SettingsContext from "./SettingsContext";
 
-function Timer(props: any) {
+function Timer() {
 
-    const [seconds, setSeconds] = useState(props.value * 60);
-    const [isPause, setIsPause] = useState(false);
+    const settingsInfo = useContext(SettingsContext);
 
-    const minutesString = String(Math.floor(seconds / 60)).padStart(2, "0");
-    const secondsString = String(seconds % 60).padStart(2, "0");
+    const secondsLeftRef = useRef(settingsInfo.secondsLeft);
+    const isPauseLeft = useRef(settingsInfo.isPause);
+    const modeRef = useRef(settingsInfo.mode);
 
-    function runTimer() {
-        setIsPause(!isPause);
-        if (isPause) {
-            useEffect(() => {
-                setInterval(() => {
-                    setSeconds((seconds) => Math.max(seconds - 1, 0));
-                }, 1000);
-            }, []);
-        }
+    function initTimer() {
+        settingsInfo.setSecondsLeft(settingsInfo.workMinutes * 60); // set time in timer
     }
+
+    function switchMode() { // change mode work or break
+        const nextMode = modeRef.current === 'work' ? 'break' : 'work';
+        const nextSeconds = (nextMode === 'work' ? settingsInfo.workMinutes : settingsInfo.breakMinutes) * 60;
+
+        settingsInfo.setMode(nextMode);
+        modeRef.current = nextMode;
+
+        settingsInfo.setSecondsLeft(nextSeconds);
+        secondsLeftRef.current = nextSeconds;
+    }
+
+    function tick() {
+        secondsLeftRef.current--;
+        settingsInfo.setSecondsLeft(secondsLeftRef.current);
+    }
+
+    useEffect(() => {
+        initTimer();
+        const interval = setInterval(() => {
+            if (isPauseLeft.current) {
+                return;
+            }
+
+            if (secondsLeftRef.current === 0) {
+                return switchMode();
+            }
+            tick();
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [settingsInfo])
+
+    const minutesString = String(Math.floor(secondsLeftRef.current / 60)).padStart(2, "0");
+    const secondsString = String(secondsLeftRef.current % 60).padStart(2, "0");
 
     return (
         <>
