@@ -6,14 +6,14 @@ function Timer() {
     const settingsInfo = useContext(SettingsContext);
 
     const secondsLeftRef = useRef(settingsInfo.secondsLeft);
-    const isPauseLeft = useRef(settingsInfo.isPause);
+    // const isPauseRef = useRef(settingsInfo.isPause);
     const modeRef = useRef(settingsInfo.mode);
 
     function initTimer() {
         settingsInfo.setSecondsLeft(settingsInfo.workMinutes * 60); // set time in timer
     }
 
-    function switchMode() { // change mode work or break
+    function switchMode() { // change mode with work or break
         const nextMode = modeRef.current === 'work' ? 'break' : 'work';
         const nextSeconds = (nextMode === 'work' ? settingsInfo.workMinutes : settingsInfo.breakMinutes) * 60;
 
@@ -32,7 +32,7 @@ function Timer() {
     useEffect(() => {
         initTimer();
         const interval = setInterval(() => {
-            if (isPauseLeft.current) {
+            if (settingsInfo.isPause) {
                 return;
             }
 

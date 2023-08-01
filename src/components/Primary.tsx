@@ -15,8 +15,8 @@ function Primary() {
             <Timer />
             <div className="play">
                 {settingsInfo.isPause
-                    ? <PlayButton onClick={async () => { settingsInfo.setIsPause(false); isPauseRef.current = false }} />
-                    : <PauseButton onClick={async () => { settingsInfo.setIsPause(true); isPauseRef.current = true }} />}
+                    ? <PlayButton onClick={() => { settingsInfo.setIsPause(false); isPauseRef.current = false }} />
+                    : <PauseButton onClick={() => { settingsInfo.setIsPause(true); isPauseRef.current = true }} />}
             </div>
         </div>
     );

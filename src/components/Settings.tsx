@@ -38,7 +38,6 @@ function Settings() {
          <input
             type="number"
             placeholder="Numbers.."
-            // value={String(breakMinutes).padStart(1)}
             value={String(settingsInfo.breakMinutes).padStart(1)}
             maxLength={3}
             max={120}
