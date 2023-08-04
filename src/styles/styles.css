@@ -59,13 +59,13 @@ button {
    flex-direction: column;
 }
 
-h1,
+time,
 p {
    color: white;
    text-align: center;
 }
 
-h1 {
+time {
    text-align: center;
    font-family: "Inter", Helvetica, serif;
    font-size: 96px;
