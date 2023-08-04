@@ -3,25 +3,34 @@ import { createContext } from "react";
 type SettingsContextType = {
     workMinutes: number | 0
     breakMinutes: number | 0
+    secondsLeft: number | 0
+
     showSettings: boolean
     isPause: boolean
-    secondsLeft: number | 0
+    stateChangeMinutes: boolean
+
     mode: string | null
 
     setWorkMinutes: (newValue: number) => void
+    setSecondsLeft: (newValue: number) => void
     setBreakMinutes: (newValue: number) => void
+
     setShowSettings: (newValue: boolean) => void
     setIsPause: (newValue: boolean) => void
-    setSecondsLeft: (newValue: number) => void
+    setStateChangeMinutes: (newValue: boolean) => void
+
     setMode: (newValue: string) => void
 }
 
-const iSettingsContextState = {
+const iSettingsContextState= {
     workMinutes: 45,
     breakMinutes: 45,
+    secondsLeft: 0,
+
     showSettings: true,
     isPause: false,
-    secondsLeft: 0,
+    stateChangeMinutes: false,
+
     mode: "",
 
     setWorkMinutes: () => undefined,
@@ -29,7 +38,8 @@ const iSettingsContextState = {
     setShowSettings: () => undefined,
     setIsPause: () => undefined,
     setSecondsLeft: () => undefined,
-    setMode: () => undefined
+    setMode: () => undefined,
+    setStateChangeMinutes: () => undefined,
 }
 
 const SettingsContext = createContext<SettingsContextType>(iSettingsContextState)

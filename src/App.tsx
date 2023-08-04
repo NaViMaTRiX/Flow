@@ -13,7 +13,8 @@ function App() {
     const [breakMinutes, setBreakMinutes] = useState<number | 0>(15);
     const [secondsLeft, setSecondsLeft] = useState<number | 0>(workMinutes * 60);
     const [isPause, setIsPause] = useState<boolean>(true);
-    const [mode, setMode] = useState<string | null>('work');
+    const [mode, setMode] = useState<string>('work');
+    const [stateChangeMinutes, setStateChangeMinutes] = useState<boolean>(false)
 
 
     return (
@@ -27,13 +28,15 @@ function App() {
                     isPause,
                     secondsLeft,
                     mode,
+                    stateChangeMinutes,
 
                     setWorkMinutes,
                     setBreakMinutes,
                     setShowSettings,
                     setIsPause,
                     setSecondsLeft,
-                    setMode
+                    setMode,
+                    setStateChangeMinutes,
                 }} >
                     <Header />
                     {showSettings ? <Settings /> : <Primary />}

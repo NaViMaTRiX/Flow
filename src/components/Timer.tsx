@@ -11,15 +11,19 @@ function Timer() {
     const modeRef = useRef(settingsInfo.mode);
 
     useEffect(() => {
-        // secondsLeftRef.current = (modeRef.current === 'work' ? settingsInfo.workMinutes : settingsInfo.breakMinutes) * 60;
-        // settingsInfo.setSecondsLeft(secondsLeftRef.current)
+          // secondsLeftRef.current = (modeRef.current === 'work' ? settingsInfo.workMinutes : settingsInfo.breakMinutes) * 60;
+          // settingsInfo.setSecondsLeft(secondsLeftRef.current)
 
-        if (!((settingsInfo.breakMinutes || settingsInfo.workMinutes) * 60 === settingsInfo.secondsLeft)) {
-            return settingsInfo.setSecondsLeft((modeRef.current === 'work' ? settingsInfo.workMinutes : settingsInfo.breakMinutes) * 60);
-        }
+          const comparisonSecondsLeft: boolean = settingsInfo.breakMinutes * 60 === settingsInfo.secondsLeft;
 
-        console.log("render2")
-    }, [settingsInfo.workMinutes, settingsInfo.breakMinutes])
+          if (settingsInfo.stateChangeMinutes) {
+             if (!comparisonSecondsLeft) {
+                return settingsInfo.setSecondsLeft((modeRef.current === "work" ? settingsInfo.workMinutes : settingsInfo.breakMinutes) * 60);
+             }
+          }
+          console.log("stateChangeMinutes:", settingsInfo.stateChangeMinutes, comparisonSecondsLeft)
+       },
+       [settingsInfo.stateChangeMinutes])
 
     function initTimer() {
         // if (!(settingsInfo.secondsLeft === secondsLeftRef.current)) {
@@ -39,7 +43,7 @@ function Timer() {
         // secondsLeftRef.current = nextSeconds;
     }
 
-    function tick() {
+    function tick(){
         // secondsLeftRef.current--;
         // settingsInfo.setSecondsLeft(secondsLeftRef.current);
 
@@ -58,14 +62,11 @@ function Timer() {
             }
             tick();
         }, 1000);
-        console.log("render1")
         return () => clearInterval(interval);
     }, [settingsInfo.isPause])
 
     const minutesString = String(Math.floor(settingsInfo.secondsLeft / 60)).padStart(2, "0");
     const secondsString = String(settingsInfo.secondsLeft % 60).padStart(2, "0");
-
-    // console.log("secondsLeft", settingsInfo.secondsLeft, "workMinutes", settingsInfo.workMinutes, "secondsLeftRef")
 
     return (
         <>

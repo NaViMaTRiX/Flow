@@ -7,7 +7,6 @@ import SettingsContext from "./SettingsContext";
 function Primary() {
 
     const settingsInfo = useContext(SettingsContext);
-    const isPauseRef = useRef(settingsInfo.isPause);
 
     return (
         <div className="main">
@@ -15,8 +14,8 @@ function Primary() {
             <Timer />
             <div className="play">
                 {settingsInfo.isPause
-                    ? <PlayButton onClick={() => { settingsInfo.setIsPause(false); isPauseRef.current = false }} />
-                    : <PauseButton onClick={() => { settingsInfo.setIsPause(true); isPauseRef.current = true }} />}
+                    ? <PlayButton onClick={() => { settingsInfo.setIsPause(false)}} />
+                    : <PauseButton onClick={() => { settingsInfo.setIsPause(true) }} />}
             </div>
         </div>
     );
