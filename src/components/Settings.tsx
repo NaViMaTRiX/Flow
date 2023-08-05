@@ -8,19 +8,11 @@ function Settings() {
    const [stateBreakMinutes, setStateBreakMinutes] = useState<boolean>(false);
 
 
-   function WorkMinMax(): number {
-      settingsInfo.workMinutes < 1 ? settingsInfo.setWorkMinutes(1) : settingsInfo.workMinutes;
-      settingsInfo.workMinutes > 120 ? settingsInfo.setWorkMinutes(120) : settingsInfo.workMinutes;
-      return settingsInfo.workMinutes;
+   function WorkOrBreakMinMax(minutes: number, set: (a: number) => void) : number{
+      minutes < 1 ? set(1) : minutes;
+      minutes > 120 ? set(120) : minutes;
+      return minutes;
    }
-
-   function BreakMinMax(): number {
-      settingsInfo.breakMinutes < 1 ? settingsInfo.setBreakMinutes(1) : settingsInfo.breakMinutes;
-      settingsInfo.breakMinutes > 120 ? settingsInfo.setBreakMinutes(120) : settingsInfo.breakMinutes;
-      return settingsInfo.breakMinutes;
-   }
-
-   console.log("stateWorkMinutes",settingsInfo.stateWorkMinutes, "stateBreakMinutes",  settingsInfo.stateBreakMinutes, "stateChangeMinutes:", settingsInfo.stateChangeMinutes)
 
    settingsInfo.setStateChangeMinutes(stateWorkMinutes || stateBreakMinutes)
 
@@ -35,9 +27,9 @@ function Settings() {
             max={120}
             min={1}
             tabIndex={1}
-            onBlur={WorkMinMax}
+            onBlur={() => WorkOrBreakMinMax(settingsInfo.workMinutes, settingsInfo.setWorkMinutes)}
             onChange={event => {settingsInfo.setWorkMinutes(Number(event.target.value));
-               if(!(settingsInfo.workMinutes === event.target.value)) {
+               if(!(settingsInfo.workMinutes === Number(event.target.value))) {
                   setStateWorkMinutes((): boolean => true)
                }
             }}
@@ -53,9 +45,9 @@ function Settings() {
             maxLength={3}
             max={120}
             min={1}
-            onBlur={BreakMinMax}
+            onBlur={() => WorkOrBreakMinMax(settingsInfo.breakMinutes, settingsInfo.setBreakMinutes)}
             onChange={event => { settingsInfo.setBreakMinutes(Number(event.target.value));
-               if(!(settingsInfo.workMinutes === event.target.value)) {
+               if(!(settingsInfo.workMinutes === Number(event.target.value))) {
                   setStateBreakMinutes(():boolean => true)
                }
             }}
