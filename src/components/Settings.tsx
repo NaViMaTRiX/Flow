@@ -14,6 +14,8 @@ function Settings() {
       return minutes;
    }
 
+   // console.log(settingsInfo.stateChangeMinutes) true
+
    settingsInfo.setStateChangeMinutes(stateWorkMinutes || stateBreakMinutes)
 
    return (

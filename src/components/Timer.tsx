@@ -7,7 +7,7 @@ function Timer() {
 
     useEffect(() => {
         const comparisonSecondsLeft: boolean = settingsInfo.breakMinutes * 60 === settingsInfo.secondsLeft || settingsInfo.workMinutes * 60 === settingsInfo.secondsLeft;
-
+         console.log(settingsInfo.workMinutes)
        if (settingsInfo.stateChangeMinutes) {
           if (!comparisonSecondsLeft) {
              settingsInfo.setSecondsLeft((settingsInfo.mode === "work" ? settingsInfo.workMinutes : settingsInfo.breakMinutes) * 60);
@@ -35,6 +35,8 @@ function Timer() {
     }
 
     useEffect(() => {
+       settingsInfo.setSecondsLeft(settingsInfo.secondsLeft--);
+
         const interval = setInterval(() => {
             if (settingsInfo.isPause) {
                 return;
@@ -53,7 +55,7 @@ function Timer() {
 
     return (
         <>
-            <time dateTime="45:00">{minutesString}:{secondsString}</time>
+            <h1 id="timer" className='timer'>{minutesString}:{secondsString}</h1>
         </>
     );
 }
