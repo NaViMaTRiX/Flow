@@ -53,7 +53,7 @@ function Timer() {
 
     return (
         <>
-            <time dateTime="45:00">{minutesString}:{secondsString}</time>
+            <time dateTime="{minutesString}:{secondsString}" id='timer' className='timer'>{minutesString}:{secondsString}</time>
         </>
     );
 }
