@@ -15,10 +15,10 @@ function App() {
     const [mode, setMode] = useState<string>('work');
     const [stateChangeMinutes, setStateChangeMinutes] = useState<boolean>(false);
 
-    // const localSecondsLeft = Number(JSON.parse(localStorage.getItem('secondsLeft')!))
-    const [secondsLeft, setSecondsLeft] = useState<number | 0>(workMinutes * 60);
+    const localSecondsLeft = Number(JSON.parse(localStorage.getItem('secondsLeft')!))
+    const [secondsLeft, setSecondsLeft] = useState<number | 0>(localSecondsLeft);
 
-
+    console.log(mode)
     return (
         <main>
             <Titlebar />

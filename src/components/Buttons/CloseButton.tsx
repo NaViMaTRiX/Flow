@@ -1,10 +1,15 @@
 import { appWindow } from "@tauri-apps/api/window";
+import { useContext } from "react";
+import settingsContext from "../SettingsContext.tsx";
 
 function CloseButton(props: any) {
+   const settingsInfo = useContext(settingsContext);
+
     return (
        <button {...props} onClick={async () => {
           const timerSeconds: number[] = document.querySelector('.timer')!.textContent!.split(":").map(Number)
-          const localSecondsLeft: number = timerSeconds[0] * 60 + timerSeconds[1];
+          const sumSecondsLeft: number = timerSeconds[0] * 60 + timerSeconds[1];
+          const localSecondsLeft: number = sumSecondsLeft === 0 ? settingsInfo.workMinutes * 60 : sumSecondsLeft
           localStorage.setItem("secondsLeft", JSON.stringify(localSecondsLeft))
           await appWindow.close();
        }}>
