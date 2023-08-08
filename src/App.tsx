@@ -11,10 +11,12 @@ function App() {
     const [showSettings, setShowSettings] = useState<boolean>(false);
     const [workMinutes, setWorkMinutes] = useState<number | 0>(45);
     const [breakMinutes, setBreakMinutes] = useState<number | 0>(15);
-    const [secondsLeft, setSecondsLeft] = useState<number | 0>(workMinutes * 60);
     const [isPause, setIsPause] = useState<boolean>(true);
     const [mode, setMode] = useState<string>('work');
-    const [stateChangeMinutes, setStateChangeMinutes] = useState<boolean>(false)
+    const [stateChangeMinutes, setStateChangeMinutes] = useState<boolean>(false);
+
+    // const localSecondsLeft = Number(JSON.parse(localStorage.getItem('secondsLeft')!))
+    const [secondsLeft, setSecondsLeft] = useState<number | 0>(workMinutes * 60);
 
 
     return (
