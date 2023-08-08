@@ -11,16 +11,19 @@ function App() {
     const [isPause, setIsPause] = useState<boolean>(true);
     const [stateChangeMinutes, setStateChangeMinutes] = useState<boolean>(false);
 
-   const [workMinutes, setWorkMinutes] = useState<number | 0>(45);
-   const [breakMinutes, setBreakMinutes] = useState<number | 0>(15);
+    const localWorkMinutes: number = Number(JSON.parse(localStorage.getItem("workMinutes")!))
+    const [workMinutes, setWorkMinutes] = useState<number | 1>(localWorkMinutes);
 
-    const localMode = String(JSON.parse(localStorage.getItem("mode")!))
+    const localBreakMinutes: number = Number(JSON.parse(localStorage.getItem("breakMinutes")!))
+    const [breakMinutes, setBreakMinutes] = useState<number | 1>(localBreakMinutes);
+
+    const localMode: string = String(JSON.parse(localStorage.getItem("mode")!))
     const [mode, setMode] = useState<string>(localMode);
 
-    const localSecondsLeft = Number(JSON.parse(localStorage.getItem('secondsLeft')!));
+    const localSecondsLeft: number = Number(JSON.parse(localStorage.getItem('secondsLeft')!));
     const [secondsLeft, setSecondsLeft] = useState<number | 0>(localSecondsLeft);
 
-    console.log(mode)
+
     return (
         <main>
             <SettingsContext.Provider value={{
