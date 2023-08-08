@@ -60,12 +60,14 @@ button {
 }
 
 time,
+h1,
 p {
    color: white;
    text-align: center;
 }
 
-time {
+time,
+h1 {
    text-align: center;
    font-family: "Inter", Helvetica, serif;
    font-size: 96px;
