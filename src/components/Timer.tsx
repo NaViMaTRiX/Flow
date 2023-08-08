@@ -44,7 +44,7 @@ function Timer() {
                 return switchMode();
             }
             tick();
-        }, 1000);
+        }, 10);
         return () => clearInterval(interval);
     }, [settingsInfo.isPause, settingsInfo.mode])
 
