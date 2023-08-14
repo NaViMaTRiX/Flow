@@ -1,16 +1,16 @@
 import { useContext, useState } from "react";
-import SettingsContext from "./SettingsContext";
+import SettingsContext from "./SettingsContext.tsx";
 
 function Settings() {
 
    const settingsInfo = useContext(SettingsContext);
-   const [stateWorkMinutes, setStateWorkMinutes] = useState<boolean>(false );
+   const [stateWorkMinutes, setStateWorkMinutes] = useState<boolean>(false);
    const [stateBreakMinutes, setStateBreakMinutes] = useState<boolean>(false);
 
-
-   function WorkOrBreakMinMax(minutes: number, set: (a: number) => void) : number{
-      minutes < 1 ? set(1) : minutes;
-      minutes > 120 ? set(120) : minutes;
+   // функция которая переопределяет значение введённые из input. Проще говоря делает границы для минут.
+   function WorkOrBreakMinMax(minutes: number, setMinutes: (a: number) => void) : number{
+      minutes < 1 ? setMinutes(1) : minutes;
+      minutes > 120 ? setMinutes(120) : minutes;
       return minutes;
    }
 

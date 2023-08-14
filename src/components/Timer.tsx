@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
-import SettingsContext from "./SettingsContext";
+import SettingsContext from "./main/SettingsContext.tsx";
 
 function Timer() {
 
     const settingsInfo = useContext(SettingsContext);
+    const song = new Audio('src/audio/song1.mp3');
 
     useEffect(() => {
         const comparisonSecondsLeft: boolean = settingsInfo.breakMinutes * 60 === settingsInfo.secondsLeft || settingsInfo.workMinutes * 60 === settingsInfo.secondsLeft;
@@ -21,6 +22,7 @@ function Timer() {
     // function initTimer() {
     //     // данные из локольного хранилища инитятся при запуске
     // }
+   // console.log(settingsInfo.stateChangeMinutes)
 
     function switchMode() { // change mode with work or break
         const nextMode = settingsInfo.mode === 'work' ? 'break' : 'work';
@@ -28,6 +30,9 @@ function Timer() {
 
         settingsInfo.setMode(nextMode);
         settingsInfo.setSecondsLeft(nextSeconds);
+
+       song.volume = 0.2;
+       song.play().then();
     }
 
     function tick() {
@@ -36,12 +41,14 @@ function Timer() {
 
     useEffect(() => {
         const interval = setInterval(() => {
+
             if (settingsInfo.isPause) {
                 return;
             }
 
             if (settingsInfo.secondsLeft === 0) {
-                return switchMode();
+               settingsInfo.setIsPause(true)
+               return switchMode();
             }
             tick();
         }, 1000);
@@ -50,6 +57,7 @@ function Timer() {
 
     const minutesString = String(Math.floor(settingsInfo.secondsLeft / 60)).padStart(2, "0");
     const secondsString = String(settingsInfo.secondsLeft % 60).padStart(2, "0");
+
 
     return (
         <>

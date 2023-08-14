@@ -1,6 +1,6 @@
-import DiagrammButton from "./Buttons/DiagramButton";
-import ReloadButton from "./Buttons/ReloadButtoh";
-import SettingsButton from "./Buttons/SettingsButton";
+import DiagrammButton from "../Buttons/DiagramButton.tsx";
+import ReloadButton from "../Buttons/ReloadButton.tsx";
+import SettingsButton from "../Buttons/SettingsButton.tsx";
 
 function Header() {
    return (

@@ -1,6 +1,6 @@
-import CloseButton from "./Buttons/CloseButton";
-import DashButton from "./Buttons/DashButton";
-import PinButton from "./Buttons/PinButton";
+import CloseButton from "../Buttons/CloseButton.tsx";
+import DashButton from "../Buttons/DashButton.tsx";
+import PinButton from "../Buttons/PinButton.tsx";
 
 function Titlebar() {
     return (

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import SettingsContext from "../SettingsContext.tsx";
+import SettingsContext from "../main/SettingsContext.tsx";
 
 function ReloadButton(props: any) {
     const settingsInfo = useContext(SettingsContext);

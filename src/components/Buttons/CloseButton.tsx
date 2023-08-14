@@ -1,6 +1,7 @@
 import { appWindow } from "@tauri-apps/api/window";
 import { useContext } from "react";
-import settingsContext from "../SettingsContext.tsx";
+import settingsContext from "../main/SettingsContext.tsx";
+// import { GetData } from "../GetLocalStorage.tsx";
 
 function CloseButton(props: any) {
    const settingsInfo = useContext(settingsContext);
@@ -17,12 +18,14 @@ function CloseButton(props: any) {
           localStorage.setItem("breakMinutes", JSON.stringify(localBreakMinutes))
 
           const mode: string = settingsInfo.mode!
-          const localMode: string = mode === "" ? "work" : mode
+          const localMode: string = mode === null ? "work" : mode
           localStorage.setItem("mode", JSON.stringify(localMode))
 
           const timerSeconds: number = settingsInfo.secondsLeft
           const localSecondsLeft: number = timerSeconds === 0 ? settingsInfo.workMinutes * 60 : timerSeconds
           localStorage.setItem("secondsLeft", JSON.stringify(localSecondsLeft))
+
+          // GetData();
 
           await appWindow.close();
        }}>

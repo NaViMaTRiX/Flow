@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import SettingsContext from "../SettingsContext";
+import SettingsContext from "../main/SettingsContext.tsx";
 
 
 function SettingsButton(props: any) {

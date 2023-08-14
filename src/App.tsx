@@ -1,9 +1,9 @@
-import Titlebar from "./components/Titlebar";
+import Titlebar from "./components/main/Titlebar.tsx";
 import { useState } from "react";
-import Primary from "./components/Primary";
-import Header from "./components/Header";
-import Settings from "./components/Settings";
-import SettingsContext from "./components/SettingsContext";
+import Primary from "./components/main/Primary.tsx";
+import Header from "./components/main/Header.tsx";
+import Settings from "./components/main/Settings.tsx";
+import SettingsContext from "./components/main/SettingsContext.tsx";
 
 function App() {
 
@@ -12,16 +12,16 @@ function App() {
     const [stateChangeMinutes, setStateChangeMinutes] = useState<boolean>(false);
 
     const localWorkMinutes: number = Number(JSON.parse(localStorage.getItem("workMinutes")!))
-    const [workMinutes, setWorkMinutes] = useState<number | 1>(localWorkMinutes);
+    const [workMinutes, setWorkMinutes] = useState<number | 0>(localWorkMinutes);
 
     const localBreakMinutes: number = Number(JSON.parse(localStorage.getItem("breakMinutes")!))
-    const [breakMinutes, setBreakMinutes] = useState<number | 1>(localBreakMinutes);
+    const [breakMinutes, setBreakMinutes] = useState<number | 0>(localBreakMinutes);
 
     const localMode: string = String(JSON.parse(localStorage.getItem("mode")!))
     const [mode, setMode] = useState<string>(localMode);
 
     const localSecondsLeft: number = Number(JSON.parse(localStorage.getItem('secondsLeft')!));
-    const [secondsLeft, setSecondsLeft] = useState<number | 0>(localSecondsLeft);
+    const [secondsLeft, setSecondsLeft] = useState<number>(localSecondsLeft);
 
 
     return (

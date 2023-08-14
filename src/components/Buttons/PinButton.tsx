@@ -3,13 +3,12 @@ import { useState } from "react";
 
 function PinButton(props: any) {
 
-    const [onTop, setStateOnTop] = useState<boolean>(false);
+    const [onTop, setStateOnTop] = useState<boolean>(true);
 
     function Switch(): boolean {
         setStateOnTop(!onTop);
         return onTop;
     }
-
 
     return (
         <button {...props} onClick={async () => await appWindow.setAlwaysOnTop(Switch())}>

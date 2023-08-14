@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import PauseButton from "./Buttons/PauseButton";
-import PlayButton from "./Buttons/PlayButton";
-import Timer from "./Timer";
-import SettingsContext from "./SettingsContext";
+import PauseButton from "../Buttons/PauseButton.tsx";
+import PlayButton from "../Buttons/PlayButton.tsx";
+import Timer from "../Timer.tsx";
+import SettingsContext from "./SettingsContext.tsx";
 
 function Primary() {
 
@@ -17,7 +17,8 @@ function Primary() {
             <div className="play">
                 {settingsInfo.isPause
                     ? <PlayButton onClick={() => { settingsInfo.setIsPause(false); settingsInfo.setStateChangeMinutes(false)}} />
-                    : <PauseButton onClick={() => { settingsInfo.setIsPause(true) }} />}
+                    : <PauseButton onClick={() => { settingsInfo.setIsPause(true)
+                   }} />}
             </div>
         </div>
     );
